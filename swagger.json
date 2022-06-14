@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebApiEnums",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Family": {
+      "post": {
+        "tags": [
+          "Family"
+        ],
+        "operationId": "Post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Family": {
+        "enum": [
+          "Rick",
+          "Christine",
+          "Ian",
+          "William"
+        ],
+        "type": "string"
+      },
+      "FamilyRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "familyMember": {
+            "$ref": "#/components/schemas/Family"
+          },
+          "pet": {
+            "$ref": "#/components/schemas/Pets"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pets": {
+        "enum": [
+          "Grommit",
+          "Kepler",
+          "Grover"
+        ],
+        "type": "string"
+      }
+    }
+  }
+}

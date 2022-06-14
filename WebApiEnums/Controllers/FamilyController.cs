@@ -5,19 +5,19 @@ namespace WebApiEnums.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class FamilyController : ControllerBase
 {
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<FamilyController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public FamilyController(ILogger<FamilyController> logger)
     {
         _logger = logger;
     }
 
-    [HttpGet(Name = "Get")]
-    public async Task<IActionResult> Get(FamilyRequest request)
+    [HttpPost(Name = "Post")]
+    public async Task<IActionResult> Post(FamilyRequest request)
     {
         await Task.Delay(0);
-        return Ok();
+        return Ok(DateTime.UtcNow);
     }
 }
